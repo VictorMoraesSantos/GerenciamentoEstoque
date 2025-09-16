@@ -9,7 +9,7 @@ namespace Estoque.Infrastructure.Persistence.Data
             : base(options)
         {
         }
-        public DbSet<EstoqueAggregate> Estoques { get; set; }
+        public DbSet<Domain.Enitities.Estoque> Estoques { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Movimentacao> MovimentacoesEstoque { get; set; }
 

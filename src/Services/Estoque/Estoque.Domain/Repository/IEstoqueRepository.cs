@@ -3,7 +3,7 @@ using Shared.Common;
 
 namespace Estoque.Domain.Repository
 {
-    public interface IEstoqueRepository : IRepository<EstoqueAggregate, int>
+    public interface IEstoqueRepository : IRepository<Enitities.Estoque, int>
     {
     }
 }

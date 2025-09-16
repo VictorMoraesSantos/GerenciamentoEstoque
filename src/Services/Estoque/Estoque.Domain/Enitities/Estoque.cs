@@ -5,7 +5,7 @@ using Shared.Exceptions;
 
 namespace Estoque.Domain.Enitities
 {
-    public class EstoqueAggregate : BaseEntity<int>
+    public class Estoque : BaseEntity<int>
     {
         private readonly List<Movimentacao> _movimentacoes = new();
 
@@ -13,9 +13,9 @@ namespace Estoque.Domain.Enitities
         public Produto Produto { get; private set; }
         public IReadOnlyCollection<Movimentacao> Movimentacoes => _movimentacoes.AsReadOnly();
 
-        private EstoqueAggregate() { }
+        private Estoque() { }
 
-        public EstoqueAggregate(int produtoId)
+        public Estoque(int produtoId)
         {
             ProdutoId = produtoId;
         }

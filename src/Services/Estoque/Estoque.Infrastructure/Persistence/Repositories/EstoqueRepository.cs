@@ -11,32 +11,32 @@ namespace Estoque.Infrastructure.Persistence.Repositories
 {
     public class EstoqueRepository : IEstoqueRepository
     {
-        public Task Create(EstoqueAggregate entity, CancellationToken cancellationToken = default)
+        public Task Create(Domain.Enitities.Estoque entity, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(EstoqueAggregate entity, CancellationToken cancellationToken = default)
+        public Task Delete(Domain.Enitities.Estoque entity, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<EstoqueAggregate?>> Find(Expression<Func<EstoqueAggregate, bool>> predicate, CancellationToken cancellationToken = default)
+        public Task<IEnumerable<Domain.Enitities.Estoque?>> Find(Expression<Func<Domain.Enitities.Estoque, bool>> predicate, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<EstoqueAggregate?>> GetAll(CancellationToken cancellationToken = default)
+        public Task<IEnumerable<Domain.Enitities.Estoque?>> GetAll(CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public Task<EstoqueAggregate?> GetById(int id, CancellationToken cancellationToken = default)
+        public Task<Domain.Enitities.Estoque?> GetById(int id, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public Task Update(EstoqueAggregate entity, CancellationToken cancellationToken = default)
+        public Task Update(Domain.Enitities.Estoque entity, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
