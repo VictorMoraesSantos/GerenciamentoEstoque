@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/ApiGateway/">
+    <Project Path="src/ApiGateway/YarpApiGateway/YarpApiGateway.csproj" Id="255a733a-cc2a-4cc7-a7b7-c71d5b143818" />
+  </Folder>
+  <Folder Name="/Services/" />
+  <Folder Name="/Services/Estoque/">
+    <Project Path="src/Services/Estoque/Estoque.API/Estoque.API.csproj" Id="9740f68c-6414-410d-82b9-8b3c1e4f6aa8" />
+    <Project Path="src/Services/Estoque/Estoque.Application/Estoque.Application.csproj" />
+    <Project Path="src/Services/Estoque/Estoque.Domain/Estoque.Domain.csproj" Id="02b53c44-9c24-4354-bd73-88ab8e2785e0" />
+    <Project Path="src/Services/Estoque/Estoque.Infrastructure/Estoque.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Services/Users/">
+    <Project Path="src/Services/Users/Users.API/Users.API.csproj" Id="c34fff78-ec27-42b7-b36e-c8d47131490c" />
+    <Project Path="src/Services/Users/Users.Application/Users.Application.csproj" Id="39cf3ac4-3f20-4ee5-9196-4d7fc833b43d" />
+    <Project Path="src/Services/Users/Users.Domain/Users.Domain.csproj" Id="e41d78a7-85be-4f8d-8e09-9cc29c276cb2" />
+    <Project Path="src/Services/Users/Users.Infrastructure/Users.Infrastructure.csproj" Id="89f66193-2436-4eff-ac5a-12b6259f5a21" />
+  </Folder>
+  <Folder Name="/Services/Vendas/">
+    <Project Path="src/Services/Vendas/Vendas.API/Vendas.API.csproj" />
+    <Project Path="src/Services/Vendas/Vendas.Application/Vendas.Application.csproj" />
+    <Project Path="src/Services/Vendas/Vendas.Domain/Vendas.Domain.csproj" />
+    <Project Path="src/Services/Vendas/Vendas.Infrastructure/Vendas.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="src/Shared/Shared/Shared.csproj" Id="cbb17ded-f163-4c8f-8f9c-0de0395a8dbf" />
+  </Folder>
+</Solution>
