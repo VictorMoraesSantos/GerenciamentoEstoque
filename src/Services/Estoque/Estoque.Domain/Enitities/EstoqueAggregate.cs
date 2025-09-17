@@ -5,17 +5,16 @@ using Shared.Exceptions;
 
 namespace Estoque.Domain.Enitities
 {
-    public class Estoque : BaseEntity<int>
+    public class EstoqueAggregate : BaseEntity<int>
     {
-        private readonly List<Movimentacao> _movimentacoes = new();
-
         public int ProdutoId { get; set; }
         public Produto Produto { get; private set; }
+        private readonly List<Movimentacao> _movimentacoes = new();
         public IReadOnlyCollection<Movimentacao> Movimentacoes => _movimentacoes.AsReadOnly();
 
-        private Estoque() { }
+        private EstoqueAggregate() { }
 
-        public Estoque(int produtoId)
+        public EstoqueAggregate(int produtoId)
         {
             ProdutoId = produtoId;
         }
@@ -29,7 +28,6 @@ namespace Estoque.Domain.Enitities
                 throw new BusinessRuleException("O motivo da movimentação é obrigatório.");
 
             var movimentacao = new Movimentacao(
-                ProdutoId,
                 quantidade,
                 TipoMovimentacao.Entrada,
                 motivo);
@@ -58,7 +56,6 @@ namespace Estoque.Domain.Enitities
                 throw new BusinessRuleException($"Quantidade insuficiente em estoque. Disponível: {Produto.QuantidadeEmEstoque}");
 
             var movimentacao = new Movimentacao(
-                ProdutoId,
                 quantidade,
                 TipoMovimentacao.Saida,
                 motivo);

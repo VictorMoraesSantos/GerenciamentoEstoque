@@ -1,44 +1,64 @@
 ﻿using Estoque.Domain.Enitities;
 using Estoque.Domain.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Estoque.Infrastructure.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Estoque.Infrastructure.Persistence.Repositories
 {
     public class MovimentacaoRepository : IMovimentacaoRepository
     {
-        public Task Create(Movimentacao entity, CancellationToken cancellationToken = default)
+        private readonly ApplicationDbContext _context;
+
+        public MovimentacaoRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task Delete(Movimentacao entity, CancellationToken cancellationToken = default)
+        public async Task<Movimentacao?> GetById(int id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Movimentacoes
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+
+            return entity;
         }
 
-        public Task<IEnumerable<Movimentacao?>> Find(Expression<Func<Movimentacao, bool>> predicate, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Movimentacao?>> GetAll(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var entities = await _context.Movimentacoes
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
+
+            return entities;
         }
 
-        public Task<IEnumerable<Movimentacao?>> GetAll(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Movimentacao?>> Find(Expression<Func<Movimentacao, bool>> predicate, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var entities = await _context.Movimentacoes
+                .AsNoTracking()
+                .Where(predicate)
+                .ToListAsync(cancellationToken);
+
+            return entities;
         }
 
-        public Task<Movimentacao?> GetById(int id, CancellationToken cancellationToken = default)
+        public async Task Create(Movimentacao entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await _context.Movimentacoes.AddAsync(entity, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public Task Update(Movimentacao entity, CancellationToken cancellationToken = default)
+        public async Task Update(Movimentacao entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            _context.Movimentacoes.Update(entity);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task Delete(Movimentacao entity, CancellationToken cancellationToken = default)
+        {
+            _context.Movimentacoes.Remove(entity);
+            await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -1,44 +1,64 @@
 ﻿using Estoque.Domain.Enitities;
 using Estoque.Domain.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Estoque.Infrastructure.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Estoque.Infrastructure.Persistence.Repositories
 {
     public class EstoqueRepository : IEstoqueRepository
     {
-        public Task Create(Domain.Enitities.Estoque entity, CancellationToken cancellationToken = default)
+        private readonly ApplicationDbContext _context;
+
+        public EstoqueRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task Delete(Domain.Enitities.Estoque entity, CancellationToken cancellationToken = default)
+        public async Task<EstoqueAggregate?> GetById(int id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Estoques
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+
+            return entity;
         }
 
-        public Task<IEnumerable<Domain.Enitities.Estoque?>> Find(Expression<Func<Domain.Enitities.Estoque, bool>> predicate, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<EstoqueAggregate?>> GetAll(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var entities = await _context.Estoques
+                .AsNoTracking()
+                .ToListAsync(cancellationToken);
+
+            return entities;
         }
 
-        public Task<IEnumerable<Domain.Enitities.Estoque?>> GetAll(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<EstoqueAggregate?>> Find(Expression<Func<EstoqueAggregate, bool>> predicate, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var entities = await _context.Estoques
+                .AsNoTracking()
+                .Where(predicate)
+                .ToListAsync(cancellationToken);
+
+            return entities;
         }
 
-        public Task<Domain.Enitities.Estoque?> GetById(int id, CancellationToken cancellationToken = default)
+        public async Task Create(EstoqueAggregate entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            await _context.Estoques.AddAsync(entity, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public Task Update(Domain.Enitities.Estoque entity, CancellationToken cancellationToken = default)
+        public async Task Update(EstoqueAggregate entity, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            _context.Estoques.Update(entity);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task Delete(EstoqueAggregate entity, CancellationToken cancellationToken = default)
+        {
+            _context.Estoques.Remove(entity);
+            await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }

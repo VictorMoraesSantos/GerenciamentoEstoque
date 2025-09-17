@@ -1,5 +1,4 @@
-﻿using Estoque.Domain.Enitities;
-using Estoque.Domain.Repository;
+﻿using Estoque.Domain.Repository;
 using Estoque.Infrastructure.Persistence.Data;
 using Estoque.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +15,7 @@ namespace Estoque.Infrastructure
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(connectionString));
-            services.AddScoped<IProdutoRepository, ProdutosRepository>();
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IEstoqueRepository, EstoqueRepository>();
             services.AddScoped<IMovimentacaoRepository, MovimentacaoRepository>();
 

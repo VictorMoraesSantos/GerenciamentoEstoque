@@ -5,6 +5,6 @@ namespace Estoque.Domain.Repository
 {
     public interface IMovimentacaoRepository : IRepository<Movimentacao, int>
     {
-        
+
     }
 }

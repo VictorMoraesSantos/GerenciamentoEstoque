@@ -9,9 +9,9 @@ namespace Estoque.Infrastructure.Persistence.Data
             : base(options)
         {
         }
-        public DbSet<Domain.Enitities.Estoque> Estoques { get; set; }
+        public DbSet<EstoqueAggregate> Estoques { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Movimentacao> MovimentacoesEstoque { get; set; }
+        public DbSet<Movimentacao> Movimentacoes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

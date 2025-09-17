@@ -1,6 +1,5 @@
 using Estoque.Domain.Enums;
 using Shared.Common;
-using System;
 
 namespace Estoque.Domain.Events
 {

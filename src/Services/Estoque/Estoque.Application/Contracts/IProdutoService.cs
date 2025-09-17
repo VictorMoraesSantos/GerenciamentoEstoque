@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Estoque.Domain.Enitities;
+using Shared.Common;
 
 namespace Estoque.Application.Contracts
 {
-    internal interface IProdutoService
+    public interface IProdutoService : IService<Produto>
     {
     }
 }
