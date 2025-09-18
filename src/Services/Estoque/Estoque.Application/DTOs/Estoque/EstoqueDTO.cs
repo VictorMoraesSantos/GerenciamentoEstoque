@@ -1,6 +1,12 @@
-﻿namespace Estoque.Application.DTOs.Estoque
+﻿using Estoque.Application.DTOs.Movimentacao;
+using Estoque.Application.DTOs.Produto;
+
+namespace Estoque.Application.DTOs.Estoque
 {
-    internal class EstoqueDTO
-    {
-    }
+    public record EstoqueDTO(
+        int Id,
+        DateTime CreatedAt,
+        DateTime? UpdatedAt,
+        ProdutoDTO Produto,
+        IEnumerable<MovimentacaoDTO> Movimentacoes);
 }

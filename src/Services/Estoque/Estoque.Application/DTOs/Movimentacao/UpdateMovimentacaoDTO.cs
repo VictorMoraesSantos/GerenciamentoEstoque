@@ -1,6 +1,10 @@
-﻿namespace Estoque.Application.DTOs.Movimentacao
+﻿using Estoque.Domain.Enums;
+
+namespace Estoque.Application.DTOs.Movimentacao
 {
-    internal class UpdateMovimentacaoDTO
-    {
-    }
+    public record UpdateMovimentacaoDTO(
+        int Id,
+        int Quantidade,
+        TipoMovimentacao Tipo,
+        string Motivo);
 }

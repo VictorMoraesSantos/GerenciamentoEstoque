@@ -102,12 +102,12 @@ namespace Estoque.Domain.Enitities
             var query = _movimentacoes.AsEnumerable();
 
             if (dataInicial.HasValue)
-                query = query.Where(m => m.DataMovimentacao >= dataInicial.Value);
+                query = query.Where(m => m.CreatedAt >= dataInicial.Value);
 
             if (dataFinal.HasValue)
-                query = query.Where(m => m.DataMovimentacao <= dataFinal.Value);
+                query = query.Where(m => m.CreatedAt <= dataFinal.Value);
 
-            return query.OrderByDescending(m => m.DataMovimentacao).ToList();
+            return query.OrderByDescending(m => m.CreatedAt).ToList();
         }
     }
 }

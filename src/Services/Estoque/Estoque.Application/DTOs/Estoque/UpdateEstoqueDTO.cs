@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Application.DTOs.Estoque
 {
-    internal class UpdateEstoqueDTO
-    {
-    }
+    public record UpdateEstoqueDTO(
+        int Id,
+        int produtoId);
 }

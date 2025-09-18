@@ -1,6 +1,8 @@
 ﻿namespace Estoque.Application.DTOs.Produto
 {
-    internal class CreateProdutoDTO
-    {
-    }
+    public record CreateProdutoDTO(
+        string Nome,
+        string Descricao,
+        decimal Preco,
+        int QuantidadeEmEstoque);
 }

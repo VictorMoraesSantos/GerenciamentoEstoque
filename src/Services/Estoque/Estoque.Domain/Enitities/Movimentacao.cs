@@ -8,7 +8,6 @@ namespace Estoque.Domain.Enitities
         public int Quantidade { get; private set; }
         public TipoMovimentacao Tipo { get; private set; }
         public string Motivo { get; private set; }
-        public DateTime DataMovimentacao { get; private set; }
 
         protected Movimentacao() { }
 
@@ -20,7 +19,6 @@ namespace Estoque.Domain.Enitities
             Quantidade = quantidade > 0 ? quantidade : throw new ArgumentException("A quantidade deve ser maior que zero.", nameof(quantidade));
             Tipo = tipo;
             Motivo = !string.IsNullOrWhiteSpace(motivo) ? motivo : throw new ArgumentException("O motivo da movimentação é obrigatório.", nameof(motivo));
-            DataMovimentacao = DateTime.UtcNow;
         }
     }
 }
